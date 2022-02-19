@@ -3,7 +3,8 @@ import { generateId } from "../Utils/generateId.js"
 
 export class List {
     constructor(data) {
-        this.id = this.id || generateId()
+        
+        this.id = data.id || generateId()
         this.name = data.name
         this.color = data.color
     }
@@ -11,7 +12,7 @@ export class List {
         return `
         <div class="col-md-4">
         <div class="card">
-          <div class="text-center bg-secondary">
+          <div style="background-color: ${this.color}" class="text-center">
           <h5 class="d-flex justify-content-between">${this.name} 0/${this.Total}
             <i class="mdi mdi-delete selectable" title="delete list" onclick="app.listsController.deleteList('${this.id}')" ></i>
           </h5>

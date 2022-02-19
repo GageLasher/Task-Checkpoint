@@ -9,7 +9,9 @@ export function saveState() {
       lists: ProxyState.lists,
       tasks: ProxyState.tasks
     }))
+    console.log("I am saving you", ProxyState.tasks);
   }
+  
   
   export function loadState() {
     // get data from local storage by same name saved
@@ -21,5 +23,7 @@ export function saveState() {
       // the data gets saved as POJOs so has to be turned back into pizza classes
       ProxyState.lists = data.lists.map(l => new List(l))
       ProxyState.tasks = data.tasks.map(t => new Task(t))
+      console.log(ProxyState.tasks);
+      console.log(ProxyState.lists);
     }
   }

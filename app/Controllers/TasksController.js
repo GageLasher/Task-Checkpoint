@@ -5,12 +5,12 @@ export class TasksController {
     createTask(listId) {
         window.event.preventDefault()
         let form = window.event.target
-        console.log("i have clicked the task button", listId);
         const rawTask = {
           listId,
-          name: form.name.value
+          name: form.name.value,
+          checked: false
+        
         }
-        console.log(rawTask)
         tasksService.createTask(rawTask)
         form.reset()
       }
@@ -19,5 +19,10 @@ export class TasksController {
         if (await Pop.confirm()) {
          tasksService.deleteTask(id)
         }
+      }
+
+      checked(id) {
+          console.log("hello world");
+          tasksService.checked(id)
       }
 }
