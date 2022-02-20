@@ -7,13 +7,14 @@ export class List {
         this.id = data.id || generateId()
         this.name = data.name
         this.color = data.color
+        this.completed = data.completed
     }
     get Template() {
         return `
         <div class="col-md-4">
         <div class="card">
           <div style="background-color: ${this.color}" class="text-center">
-          <h5 class="d-flex justify-content-between">${this.name} 0/${this.Total}
+          <h5 class="d-flex justify-content-between">${this.name} ${this.Complete}/${this.Total}
             <i class="mdi mdi-delete selectable" title="delete list" onclick="app.listsController.deleteList('${this.id}')" ></i>
           </h5>
         </div>
@@ -43,5 +44,14 @@ export class List {
           const myTasks = ProxyState.tasks.filter(t => t.listId == this.id)
           totalTasks += myTasks.length
           return totalTasks
+      }
+      get Complete() {
+         
+       let completedTask = 0
+       const myTasks = ProxyState.tasks.filter(t => t.checked == true)
+        completedTask += myTasks.length
+       
+         
+         return completedTask
       }
 }

@@ -21,7 +21,8 @@ export class ListsController {
         let form = window.event.target
         const rawList = {
             name: form.name.value,
-            color: form.color.value
+            color: form.color.value,
+            completed: 0
         }
         listsService.createList(rawList)
         form.reset()
