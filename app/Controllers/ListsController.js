@@ -1,6 +1,7 @@
 import { ProxyState } from "../AppState.js"
 import { listsService } from "../Services/ListsService.js"
 import { loadState, saveState } from "../Utils/LocalStorage.js"
+import { Pop } from "../Utils/Pop.js"
 
 function _drawList() {
     let template = ""
@@ -27,7 +28,10 @@ export class ListsController {
         listsService.createList(rawList)
         form.reset()
     }
-    deleteList(id) {
+   async deleteList(id) {
+        if (await Pop.confirm()) {
+            
         listsService.deleteList(id)
     }
+}
 }
