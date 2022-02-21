@@ -13,10 +13,10 @@ deleteTask(id){
 checked(id){
     let task = ProxyState.tasks.find(t => t.id == id)
 
-    if (document.getElementById(id).checked == false) {  
-        task.checked = false
-    } else {
+    if (task.checked == false) {  
         task.checked = true
+    } else {
+        task.checked = false
     }
     
    

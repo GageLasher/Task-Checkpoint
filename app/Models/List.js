@@ -48,8 +48,9 @@ export class List {
       get Complete() {
          
        let completedTask = 0
-       const myTasks = ProxyState.tasks.filter(t => t.checked == true)
-        completedTask += myTasks.length
+       const myTasks = ProxyState.tasks.filter(t => t.listId == this.id)
+       const cTasks = myTasks.filter(t => t.checked == true)
+        completedTask += cTasks.length
        
          
          return completedTask
